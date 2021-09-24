@@ -4,8 +4,9 @@ import java.net.Socket;
 
 public class HttpClient {
 
-    public HttpClient(String s, int i, String s1) {
+    public HttpClient(String host, int port, String requestTarget) {
     }
+
 
     public int getStatusCode(){
         return 200;
@@ -13,6 +14,7 @@ public class HttpClient {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("httpbin.org", 80);
         String request = ("GET /html HTTP/1.1\r\n" +
+                "Connection: close\r\r" +
                 "Host: httpbin.org\r\n" +
                 "\r\n");
         socket.getOutputStream().write(request.getBytes());
